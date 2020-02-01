@@ -44,4 +44,3 @@ function showSourceHtml(source) {
 editor.addEventListener('input', (e) => {
     showSourceHtml(e.target.innerText);
 });
-console.log(editor);

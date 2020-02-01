@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>markdown编译器</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+        }
+        .editor-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            box-sizing: border-box;
+            background: #353634;
+            border: 1px solid #4f504d;
+        }
+        .editor-header {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #b7b8b7;
+        }
+        #editor {
+            flex: 1;
+            background-color: #1D1F21;
+            padding: 10px;
+            color: #b7b8b7;
+        }
+        #editor:focus {
+            outline: none;
+        }
+        .previewer-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .previewer-header {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #b7b8b7;
+        }
+        #previewer {
+            flex: 1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-wrapper">
+        <div class="editor-header">输入 Markdown 文本</div>
+        <div id="editor" contenteditable="true">
+    
+        </div>
+    </div>
+    <div class="previewer-wrapper">
+        <div id="previewer">
+    
+        </div>
+    </div>
+    <!-- <script src="../src/lib/prism.js"></script> -->
+    <script src="../dist/md-compiler.js"></script>
+    <script>
+        const compileMarkdown = window.compileMarkdown;
+
+        const editor = document.querySelector('#editor');
+        const previewer = document.querySelector('#previewer');
+
+        let source = `# 一级标题
+        ## 二级标题
+        ### 三级标题
+        \`\`\`js
+        const content = 'markdown compiler';
+        console.log(\`hello world\${content}\`);
+        \`\`\`
+        #### 四级标题
+        1. 有序列表项1[文字链接](http://blog.zxrcool.com)
+        2. 有序列表项2**加粗文字**
+        - 无序列表项1*斜体文字*
+        - 无序列表项2
+        > 一段引用\`\`内联代码\`\`
+        一段引用
+        ![图片描述](http://blog.zxrcool.com/images/avatar.jpg)`;
+        let current = 0;
+        let sourceForShow = '';
+
+        function input() {
+            setTimeout(() => {
+                if(current >= source.length) {
+                    return;
+                }
+                sourceForShow += source[current];
+                editor.innerText = sourceForShow;
+                showSourceHtml(sourceForShow);
+                current++;
+                input();
+            }, 100);
+        }
+
+        input();
+
+        function showSourceHtml(source) {
+            let html = compileMarkdown(source)
+            previewer.innerHTML = html;
+        }
+
+        editor.addEventListener('input', (e) => {
+            showSourceHtml(e.target.innerText);
+        });
+    </script>
+</body>
+</html>
