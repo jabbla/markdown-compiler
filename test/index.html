@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>markdown编译器</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+        }
+        .editor-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            box-sizing: border-box;
+            background: #353634;
+            border: 1px solid #4f504d;
+        }
+        .editor-header {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #b7b8b7;
+        }
+        #editor {
+            flex: 1;
+            background-color: #1D1F21;
+            padding: 10px;
+            color: #b7b8b7;
+        }
+        #editor:focus {
+            outline: none;
+        }
+        .previewer-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .previewer-header {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #b7b8b7;
+        }
+        #previewer {
+            flex: 1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-wrapper">
+        <div class="editor-header">输入 Markdown 文本</div>
+        <div id="editor" contenteditable="true">
+    
+        </div>
+    </div>
+    <div class="previewer-wrapper">
+        <div id="previewer">
+    
+        </div>
+    </div>
+    <!-- <script src="../src/lib/prism.js"></script> -->
+    <script src="../dist/md-compiler.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

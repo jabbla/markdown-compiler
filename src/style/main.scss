@@ -1,0 +1,60 @@
+.my-markdown_content {
+    color: #333;
+    background: #fff;
+    text-rendering: optimizelegibility;
+    font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+
+    strong {
+        font-weight: bold;
+        color: #000;
+    }
+
+    a {
+        border-bottom: 1px solid #1abc9c;
+        color: #1abc9c;
+        text-decoration: none;
+        &:visited {
+            color: #1abc9c;
+        }
+    }
+
+    pre {
+        display: block;
+        background: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: 16px 24px;
+        font-family: Courier, 'Courier New', monospace;
+        white-space: pre-wrap;
+    }
+
+    code {
+        font-size: 87.5%;
+        color: #e36397;
+        word-break: break-word;
+        font-family: Courier, 'Courier New', monospace;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+        font-weight: 100;
+        color: #000;
+        line-height: 1.35;
+    }
+
+    .my-markdown_block__refer {
+        position: relative;
+        color: #999;
+        font-weight: 400;
+        border-left: 1px solid #1abc9c;
+        padding-left: 16px;
+        margin: 16px 48px 19.2px 32px;
+    }
+
+    .my-markdown_block__paragraph {
+        margin: 16px;
+    }
+
+    // .my-markdown_block__bash-code {
+    //     text-align: center;
+    // }
+}
